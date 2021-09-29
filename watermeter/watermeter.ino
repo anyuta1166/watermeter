@@ -22,7 +22,7 @@ extern "C" {
 
 /* Name and Version */
 #define PLATFORM "Wemos D1 mini & Micro SD"
-#define MODULE_VERSION "v2.2.1"
+#define MODULE_VERSION "v2.2.2"
 #define MODULE_NAME "WaterMeter " MODULE_VERSION
 #define WEB_WATERMETER_FIRST_NAME "Water"
 #define WEB_WATERMETER_LAST_NAME "Meter"
@@ -77,12 +77,14 @@ WiFiClient wifiClient;
 #define MQTT_PORT 1883
 #define END_TOPIC_HOT_OUT "HotWater"
 #define END_TOPIC_COLD_OUT "ColdWater"
+#define END_TOPIC_RSSI "RSSI"
 PubSubClient mqttClient(wifiClient);
 String mqttClientId;                      /* "MODULE_NAME-MacAddress"                                    */
-String mqttTopicHotOut, mqttTopicColdOut;
+String mqttTopicHotOut, mqttTopicColdOut, mqttTopicRSSI;
                                           /* Full name Topic -                                           *
                                            *  mqttTopicHotOut  - "MQTT_TOPIC/MacAddress/HotWater"    *
                                            *  mqttTopicColdOut - "MQTT_TOPIC/MacAddress/ColdWater"   *
+                                           *  mqttTopicRSSI    - "MQTT_TOPIC/MacAddress/RSSI"        *
                                            *  see mqtt.ino                                               */
 
 
@@ -224,6 +226,9 @@ void loop () {
       s = "";
       s += wmConfig.hotWater;
       mqttClient.publish(mqttTopicHotOut.c_str(),s.c_str());
+      s = "";
+      s += WiFi.RSSI();
+      mqttClient.publish(mqttTopicRSSI.c_str(),s.c_str());
       mqttPublishLastTime = millis();
     }
   }

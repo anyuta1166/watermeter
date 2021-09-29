@@ -8,6 +8,7 @@ void createMqttTopic() {
   
   mqttTopicHotOut = s + END_TOPIC_HOT_OUT;
   mqttTopicColdOut = s + END_TOPIC_COLD_OUT;
+  mqttTopicRSSI = s + END_TOPIC_RSSI;
 }
 
 
@@ -84,4 +85,3 @@ void printMqttState() {
     }
   }
 }
-
