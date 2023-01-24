@@ -22,7 +22,7 @@ extern "C" {
 
 /* Name and Version */
 #define PLATFORM "Wemos D1 mini & Micro SD"
-#define MODULE_VERSION "v2.2.2"
+#define MODULE_VERSION "v2.2.3"
 #define MODULE_NAME "WaterMeter " MODULE_VERSION
 #define WEB_WATERMETER_FIRST_NAME "Water"
 #define WEB_WATERMETER_LAST_NAME "Meter"
@@ -46,7 +46,7 @@ extern "C" {
 
 /* For TimeLib (NTP and clock) */
 #define SYNC_TIME 21600                          /* Interval sync to NTP Server in sec           */
-#define NTP_SERVER_NAME "ntp4.stratum2.ru"       /* URL of NTP server                            */ 
+#define NTP_SERVER_NAME "ru.pool.ntp.org"        /* URL of NTP server                            */ 
 #define NTP_LOCAL_PORT 8888                      /* NTP local port                               */
 unsigned int localPort = NTP_LOCAL_PORT;
 const int NTP_PACKET_SIZE = 48;                  /* NTP time is in the first 48 bytes of message */
